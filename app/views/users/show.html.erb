@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>User #<%= @user.id %></h3>
+  <h3><%= @user.username %></h3>
 </div>
 
 <div class="row">
@@ -9,6 +9,21 @@
       <dd><%= @user.username %></dd>
       <dt>Email</dt>
       <dd><%= @user.email %></dd>
+      <dt>User ID#</dt>
+      <dd><%= @user.id %></dd>
+      <dt>Photos</dt>
+      <dd>
+        <% @photos.each{|photo| %>
+          <% if photo.user_id == @user.id %>
+          <p style="font-size: 20px">
+            <a href="/photos/<%= photo.id %>">
+              <img src="<%= photo.image %>" height="300">
+            </a>
+            <em> <%= photo.caption %> <em>
+          </p>
+          <% end %>
+          <% } %>
+      </dd>
     </dl>
 
 
