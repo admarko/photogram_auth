@@ -1,37 +1,40 @@
 <div class="page-header">
   <h1>
-    <a href="/photos/new" class="btn btn-lg btn-success">New Photo</a>
-    All Photos
+    <a href="/photos/new" class="btn btn-lg btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
   </h1>
 </div>
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
 
-      <% @photos.each do |photo| %>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                <em> <%= photo.caption %> </em>
-                by
-                <%= User.find(photo.user_id).username.capitalize %> </h3>
-            </div>
-
-            <div class="panel-body">
-              <img src="<%= photo.image %>" width="720px"></td>
-            </div>
-
-            <div class="panel-footer">
-              <div class="btn-group btn-group-justified">
-                <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
-                <% if current_user.id == photo.user_id %>
-                  <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
-                  <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-                <% end %>
-              </div>
-            </div>
+    <% @photos.each do |photo| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <em> <%= photo.caption %> </em>
+          by
+          <%= User.find(photo.user_id).username.capitalize %>
+          <div class="text-muted">
+            <%= time_ago_in_words(photo.created_at) %> ago
           </div>
+          </h3>
+        </div>
+
+        <div class="panel-body">
+          <img src="<%= photo.image %>" class="img-responsive"></td>
+        </div>
+
+        <div class="panel-footer">
+          <div class="btn-group btn-group-justified">
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+            <% if current_user.id == photo.user_id %>
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <% end %>
 
+    </div>
   </div>
-</div>
