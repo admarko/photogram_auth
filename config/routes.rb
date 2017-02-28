@@ -21,19 +21,20 @@ Rails.application.routes.draw do
 
   # Routes for the Like resource:
   # CREATE
-  get "/likes/new", :controller => "likes", :action => "new"
-  post "/create_like", :controller => "likes", :action => "create"
+  get "/likes/new", :controller => "my_likes", :action => "new"
+  post "/create_like", :controller => "my_likes", :action => "create"
 
   # READ
-  get "/likes", :controller => "likes", :action => "index"
-  get "/likes/:id", :controller => "likes", :action => "show"
+  get "/likes", :controller => "my_likes", :action => "index"
+  get "/my_likes", :controller => "my_likes", :action => "index"
+  get "/my_likes/:id", :controller => "my_likes", :action => "show"
 
   # UPDATE
-  get "/likes/:id/edit", :controller => "likes", :action => "edit"
-  post "/update_like/:id", :controller => "likes", :action => "update"
+  get "/likes/:id/edit", :controller => "my_likes", :action => "edit"
+  post "/update_like/:id", :controller => "my_likes", :action => "update"
 
   # DELETE
-  get "/delete_like/:id", :controller => "likes", :action => "destroy"
+  get "/delete_like/:id", :controller => "my_likes", :action => "destroy"
   #------------------------------
 
   # Routes for the Photo resource:

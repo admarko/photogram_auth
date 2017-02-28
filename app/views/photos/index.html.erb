@@ -17,9 +17,9 @@
 
       <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.caption %></td>
+        <td><em> <%= photo.caption %> </em></td>
         <td><img src="<%= photo.image %>" height="100px"></td>
-        <td><%= photo.user_id %></td>
+        <td><%= User.find(photo.user_id).username %></td>
         <td>
           <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
           <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>

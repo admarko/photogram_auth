@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class MyLikesController < ApplicationController
   def index
     @likes = Like.all
 
