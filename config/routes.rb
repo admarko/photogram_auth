@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Routes for the Comment resource:
+  # Route for the index resource:
   root "photos#index"
+
+  # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
   post "/create_comment", :controller => "comments", :action => "create"
@@ -53,4 +55,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Routes for the User resource:
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
 end
