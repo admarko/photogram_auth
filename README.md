@@ -1,5 +1,4 @@
 # Photogram / Auth
-
 In this project, we'll practice tailoring the experience for users by allowing them to sign in so that we know who they are. We'll use the Devise gem to make authentication a snap.
 
 We'll be building a simple clone of [Instagram](https://www.instagram.com/).
