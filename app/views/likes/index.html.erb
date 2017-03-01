@@ -22,8 +22,20 @@
           </div>
 
           <div class="panel-footer">
+            <% @comments.each do |comment| %>
+            <% if comment.photo_id == like.photo_id %>
+            <p>
+              <a href="/users/<%= comment.user_id%>"> <%= User.find(comment.user_id).username %></a>
+              <span class="text-muted">
+                <%= time_ago_in_words(comment.created_at) %> ago
+              </span>
+            </p>
+            <p> <%= comment.body %> </p>
+            <% end %>
+            <% end %>
             <div class="btn-group btn-group-justified">
-              <a href="/photos/<%= Photo.find(like.photo_id) %>" class="btn btn-primary">Show</a>
+              
+              <a href="/photos/<%= Photo.find(like.photo_id).id %>" class="btn btn-primary">Show</a>
               <a href="/photos/<%= Photo.find(like.photo_id) %>/edit" class="btn btn-warning">Edit</a>
               <a href="/delete_photo/<%= Photo.find(like.photo_id) %>" class="btn btn-danger" rel="nofollow">Delete</a>
           </div>

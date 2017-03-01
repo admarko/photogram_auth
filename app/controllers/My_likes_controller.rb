@@ -1,13 +1,13 @@
 class MyLikesController < ApplicationController
   def index
     @likes = Like.all
-
+    @comments = Comment.all
     render("likes/index.html.erb")
   end
 
   def show
     @like = Like.find(params[:id])
-
+    @comment = Comment.all
     render("likes/show.html.erb")
   end
 

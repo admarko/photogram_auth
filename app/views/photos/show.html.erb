@@ -1,33 +1,29 @@
 <div class="page-header">
-  <h3>Photo #<%= @photo.id %></h3>
+  <h3><%= @photo.caption %> by <%= User.find(@photo.user_id).username %></h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Caption</dt>
-      <dd><em> <%= @photo.caption %> </em></dd>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <img src="<%= @photo.image %>" class="img-responsive"></td>
+    </div>
 
-      <dt>Image</dt>
-      <dd><img src="<%= @photo.image %>" height= "500px"></dd>
-
-      <dt>User</dt>
-      <dd><%= User.find(@photo.user_id).username %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/photos" class="btn btn-primary">
-        Back
-      </a>
-      <% if current_user.id == @photo.user_id %>
-      <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+    <div class="panel-footer">
+      <% @comments.each do |comment| %>
+      <% if comment.photo_id == @photo.id %>
+      <p>
+        <a href="/users/<%= comment.user_id%>"> <%= User.find(comment.user_id).username %></a>
+        <span class="text-muted">
+          <%= time_ago_in_words(comment.created_at) %> ago
+        </span>
+      </p>
+      <p> <%= comment.body %> </p>
       <% end %>
+      <% end %>
+      <div class="btn-group btn-group-justified">
+        <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">Edit</a>
+        <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
     </div>
   </div>
+</div>
 </div>

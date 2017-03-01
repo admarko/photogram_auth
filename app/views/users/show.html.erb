@@ -25,6 +25,17 @@
             </div>
 
             <div class="panel-footer">
+              <% @comments.each do |comment| %>
+              <% if comment.photo_id == photo.id %>
+              <p>
+                <a href="/users/<%= comment.user_id%>"> <%= User.find(comment.user_id).username %></a>
+                <span class="text-muted">
+                  <%= time_ago_in_words(comment.created_at) %> ago
+                </span>
+              </p>
+              <p> <%= comment.body %> </p>
+              <% end %>
+              <% end %>
               <div class="btn-group btn-group-justified">
                 <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
                 <% if current_user.id == photo.user_id %>
