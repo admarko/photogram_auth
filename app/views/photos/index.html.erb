@@ -1,6 +1,6 @@
-<div class="page-header">
+<div class="page-header col-md-offset-2 col-md-8">
   <h1>
-    <a href="/photos/new" class="btn btn-lg btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <a href="/photos/new" class="btn btn-group btn-group-justified btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
   </h1>
 </div>
 
@@ -35,7 +35,7 @@
             <input type="hidden" id="photo_id" name="photo_id" placeholder="Photo" class="form-control" value="<%=photo.id %>">
           </div>
 
-          <button class="btn btn-success">
+          <button class="btn btn-xs btn-success">
             <i class="fa fa-heart-o" aria-hidden="true"></i>
           </button>
         </form>
@@ -52,6 +52,26 @@
         <p> <%= comment.body %> </p>
         <% end %>
         <% end %>
+
+        <form action="/create_comment" method="post">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <div class="form-group">
+            <input type="hidden" id="photo_id" name="photo_id" placeholder="Photo" class="form-control" value="<%= photo.id %>">
+          </div>
+
+          <div class="form-group">
+            <textarea id="body" name="body" placeholder="Add a comment..." class="form-control" rows="3"><%=  %></textarea>
+          </div>
+
+          <div class="form-group">
+            <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+          </div>
+
+          <button class="btn btn-success">
+            Create Comment
+          </button>
+        </form>
 
 
 

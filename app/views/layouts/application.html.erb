@@ -34,7 +34,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Photogram</a>
+        <a href="/" class="navbar-brand"><i class="fa fa-camera-retro" aria-hidden="true"></i> Photogram</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,12 +43,13 @@
           <li><a href="/users"><i class="fa fa-users" aria-hidden="true"></i> All Users</a></li>
           <li><a href="/photos"><i class="fa fa-picture-o" aria-hidden="true"></i> All Posts</a></li>
           <li><a href="/my_likes"><i class="fa fa-heart" aria-hidden="true"></i> My Likes</a></li>
+          <li><a href="/users/<%=current_user.id  %>"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user != nil %>
-            <li><a href="/users/<%=current_user.id  %>">My Profile</a></li>
-            <li><a href="/users/edit"><%= current_user.username %></a></li>
+
+            <li><a href="/users/edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= current_user.username %></a></li>
             <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
           <% else %>
             <li><a href="/users/sign_in">Sign In</a></li>
